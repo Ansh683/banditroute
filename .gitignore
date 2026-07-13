@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.env
+node_modules/
+live_log.csv
+slide-*.jpg
+banditroute_deck.pdf
+banditroute_deck.pptx

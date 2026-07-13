@@ -1,0 +1,84 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#12141c"/>
+      <stop offset="100%" stop-color="#1a1d29"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="45%" r="60%">
+      <stop offset="0%" stop-color="#e8a33d" stop-opacity="0.16"/>
+      <stop offset="100%" stop-color="#e8a33d" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="reelWin" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f0b559"/>
+      <stop offset="100%" stop-color="#c8862a"/>
+    </linearGradient>
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect width="1600" height="900" fill="url(#glow)"/>
+
+  <!-- faint grid lines for technical texture -->
+  <g stroke="#2a2e3d" stroke-width="1" opacity="0.5">
+    <line x1="0" y1="150" x2="1600" y2="150"/>
+    <line x1="0" y1="750" x2="1600" y2="750"/>
+  </g>
+
+  <!-- query node (left) -->
+  <circle cx="230" cy="430" r="14" fill="#f2efe9"/>
+  <circle cx="230" cy="430" r="26" fill="none" stroke="#4fb6a6" stroke-width="2" opacity="0.6"/>
+  <text x="230" y="480" text-anchor="middle" font-family="DejaVu Sans Mono" font-size="18" fill="#8b8fa3">query</text>
+
+  <!-- routing paths from query to each reel -->
+  <!-- losing paths, dim -->
+  <path d="M 244 425 C 400 380, 520 300, 640 255" stroke="#3a3f52" stroke-width="2" fill="none" opacity="0.7"/>
+  <path d="M 244 435 C 400 470, 520 500, 640 500" stroke="#3a3f52" stroke-width="2" fill="none" opacity="0.7"/>
+  <path d="M 244 440 C 400 540, 520 620, 640 645" stroke="#3a3f52" stroke-width="2" fill="none" opacity="0.7"/>
+  <!-- winning path, bright -->
+  <path d="M 244 430 C 400 415, 520 400, 640 380" stroke="#e8a33d" stroke-width="3" fill="none" filter="url(#softGlow)"/>
+
+  <!-- four reels (the arms) -->
+  <!-- reel 1: dim, tall -->
+  <rect x="640" y="230" width="90" height="440" rx="10" fill="#20232f" stroke="#383c4d" stroke-width="2"/>
+  <rect x="655" y="250" width="60" height="60" rx="6" fill="#2c3040"/>
+  <text x="685" y="290" text-anchor="middle" font-family="DejaVu Sans Mono" font-size="24" fill="#6b7085">λ</text>
+
+  <!-- reel 2: dim -->
+  <rect x="750" y="230" width="90" height="440" rx="10" fill="#20232f" stroke="#383c4d" stroke-width="2"/>
+  <rect x="765" y="470" width="60" height="60" rx="6" fill="#2c3040"/>
+  <text x="795" y="510" text-anchor="middle" font-family="DejaVu Sans Mono" font-size="24" fill="#6b7085">μ</text>
+
+  <!-- reel 3: WINNER, highlighted amber -->
+  <rect x="860" y="230" width="90" height="440" rx="10" fill="url(#reelWin)" stroke="#f0b559" stroke-width="3" filter="url(#softGlow)"/>
+  <rect x="875" y="360" width="60" height="60" rx="6" fill="#1a1d29"/>
+  <text x="905" y="401" text-anchor="middle" font-family="DejaVu Sans" font-weight="bold" font-size="26" fill="#f0b559">R</text>
+
+  <!-- reel 4: dim -->
+  <rect x="970" y="230" width="90" height="440" rx="10" fill="#20232f" stroke="#383c4d" stroke-width="2"/>
+  <rect x="985" y="600" width="60" height="60" rx="6" fill="#2c3040"/>
+  <text x="1015" y="640" text-anchor="middle" font-family="DejaVu Sans Mono" font-size="24" fill="#6b7085">σ</text>
+
+  <!-- output path from winning reel to response node -->
+  <path d="M 950 380 C 1080 380, 1200 400, 1330 430" stroke="#e8a33d" stroke-width="3" fill="none" filter="url(#softGlow)"/>
+  <circle cx="1350" cy="430" r="14" fill="#f0b559" filter="url(#softGlow)"/>
+  <circle cx="1350" cy="430" r="26" fill="none" stroke="#e8a33d" stroke-width="2" opacity="0.6"/>
+  <text x="1350" y="480" text-anchor="middle" font-family="DejaVu Sans Mono" font-size="18" fill="#8b8fa3">response</text>
+
+  <!-- reward feedback loop arrow, subtle -->
+  <path d="M 905 230 C 905 130, 400 100, 240 400" stroke="#4fb6a6" stroke-width="1.5" fill="none" stroke-dasharray="6,6" opacity="0.5"/>
+  <text x="560" y="120" text-anchor="middle" font-family="DejaVu Sans Mono" font-size="16" fill="#4fb6a6" opacity="0.8">reward feedback</text>
+
+  <!-- title -->
+  <text x="80" y="810" font-family="DejaVu Sans" font-weight="bold" font-size="72" fill="#f2efe9">BanditRoute</text>
+  <text x="86" y="855" font-family="DejaVu Sans" font-size="24" fill="#9ba0b5">A reinforcement-learning router that learns which model to call</text>
+
+  <!-- caption top right -->
+  <text x="1520" y="60" text-anchor="end" font-family="DejaVu Sans Mono" font-size="18" fill="#6b7085">THOMPSON SAMPLING</text>
+  <text x="1520" y="85" text-anchor="end" font-family="DejaVu Sans Mono" font-size="18" fill="#6b7085">CONTEXTUAL BANDIT</text>
+</svg>
